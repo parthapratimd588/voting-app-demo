@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voting App Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f4f4;
+      padding: 50px;
+    }
+    h1 {
+      color: #333;
+    }
+    .vote-buttons {
+      margin-top: 20px;
+    }
+    button {
+      font-size: 18px;
+      margin: 10px;
+      padding: 10px 20px;
+      cursor: pointer;
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: white;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .results {
+      margin-top: 30px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Voting App</h1>
+  <div class="vote-buttons">
+    <button onclick="vote('optionA')">Vote for Option A</button>
+    <button onclick="vote('optionB')">Vote for Option B</button>
+  </div>
+  <div class="results">
+    <p>Votes for Option A: <span id="optionA">0</span></p>
+    <p>Votes for Option B: <span id="optionB">0</span></p>
+  </div>
+
+  <script>
+    let votes = { optionA: 0, optionB: 0 };
+
+    function vote(option) {
+      votes[option]++;
+      document.getElementById(option).innerText = votes[option];
+    }
+  </script>
+</body>
+</html>
