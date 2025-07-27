@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Voting App</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 2rem; text-align: center; }
+    .container { background: #fff; padding: 2rem; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    button { padding: 1rem 2rem; margin: 1rem; font-size: 1rem; cursor: pointer; }
+    .result { margin-top: 2rem; font-size: 1.2rem; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Vote for Your Choice</h1>
+    <button onclick="vote('optionA')">Vote for Option A</button>
+    <button onclick="vote('optionB')">Vote for Option B</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    // Load current votes from localStorage
+    let votes = JSON.parse(localStorage.getItem('votes')) || { optionA: 0, optionB: 0 };
+
+    function vote(option) {
+      votes[option] += 1;
+      localStorage.setItem('votes', JSON.stringify(votes));
+      showResults();
+    }
+
+    function showResults() {
+      document.getElementById('result').innerText = 
+        `Option A: ${votes.optionA} votes | Option B: ${votes.optionB} votes`;
+    }
+
+    showResults();
+  </script>
+</body>
+</html>
